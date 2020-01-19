@@ -1,0 +1,14 @@
+{
+  "name": "create-app-now",
+  "version": "1.0.0",
+  "description": "basic tools to start building web app",
+  "main": "/src/index.js",
+  "keywords": [
+    "javascript",
+    "vanilla",
+    "html",
+    "css"
+  ],
+  "author": "abraham anak agung",
+  "license": "MIT"
+}
