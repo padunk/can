@@ -12,7 +12,7 @@ The most simple tools you need to build a web app is:
 
 ## Usage
 
-```
+```bash
 npx create-app-now my-great-app
 cd my-great-app
 code . // if you using VS Code
@@ -36,4 +36,4 @@ The CSS file include my custom reset. Feel free to clear it 😄.
 
 ## License
 
-MIT
+[MIT](https://github.com/padunk/create-app-now/blob/master/LICENSE)

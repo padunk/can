@@ -2,13 +2,25 @@
   "name": "create-app-now",
   "version": "1.0.0",
   "description": "basic tools to start building web app",
-  "main": "/src/index.js",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/padunk/can.git"
+  },
   "keywords": [
     "javascript",
     "vanilla",
     "html",
     "css"
   ],
-  "author": "abraham anak agung",
+  "author": {
+    "name": "abraham anak agung",
+    "email": "abraham.agel@outlook.com",
+    "url": "https://github.com/padunk"
+  },
+  "bin": "./bin/can.js",
+  "engines": {
+    "node": ">=4"
+  },
   "license": "MIT"
 }
