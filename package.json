@@ -34,6 +34,9 @@
         "rollup": "^1.29.1"
     },
     "files": [
-        "dist"
+        "main.js",
+        "bin/",
+        "dist/",
+        "template/"
     ]
 }
