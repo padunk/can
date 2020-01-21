@@ -2,7 +2,9 @@
     "name": "create-app-now",
     "version": "1.0.0",
     "description": "basic tools to start building web app",
-    "main": "main.js",
+    "main": "dist/main.cjs.js",
+    "module": "dist/main.esm.js",
+    "browser": "dist/main.umd.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/padunk/can.git"
@@ -25,5 +27,13 @@
     "license": "MIT",
     "dependencies": {
         "optimist": "^0.6.1"
-    }
+    },
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^11.0.1",
+        "@rollup/plugin-node-resolve": "^7.0.0",
+        "rollup": "^1.29.1"
+    },
+    "files": [
+        "dist"
+    ]
 }

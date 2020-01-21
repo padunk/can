@@ -10,9 +10,10 @@ let argv = require('optimist')
         },
     })
     .describe({
+        d: 'Your new app directory name like <my-great-app>',
         h: 'Display this help message',
     })
-    .boolean(['h']).argv;
+    .boolean(['d', 'h']).argv;
 
 if (argv.h) {
     showHelp();
