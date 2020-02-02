@@ -1,4 +1,4 @@
-# crreate-app-now
+# create-app-now
 
 ## Basic tools you need to build a web app
 
@@ -8,12 +8,16 @@ The most simple tools you need to build a web app is:
 2. CSS
 3. JavaScript
 
-...And that's what you got!
+...and that's what you got!
 
 ## Usage
 
+`can (project-directory)[-y | --yes][-g | --git]`
+- -y | --yes: skip prompts. Default: *false*
+- -g | --git: initialize git. Default: *false*
+
 ```bash
-npx create-app-now my-great-app
+can
 cd my-great-app
 code . // if you using VS Code
 ```
@@ -27,7 +31,8 @@ code . // if you using VS Code
    🗒index.js
 📂views
    🗒index.html
-🗒.env
+🗒.gitignore
+🗒LICENSE
 ```
 
 ## Include CSS custom reset

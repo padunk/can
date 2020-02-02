@@ -11,6 +11,12 @@ const copy = promisify(ncp);
 
 async function copyTemplate(options) {
     return copy(options.templateDirectory, options.targetDirectory, {
+        filter: file => {
+            if (!options.git) {
+                return !/.*(.gitignore)$/.test(file);
+            }
+            return true;
+        },
         clobber: false,
     });
 }
@@ -48,17 +54,16 @@ export async function createProject(options) {
     const tasks = new Listr([
         {
             title: 'Copy template files',
-            task: () => copyTemplate(options),
+            task: () => copyTemplate(opts),
         },
         {
             title: 'Initialize git',
-            task: () => gitInit(options),
+            task: () => gitInit(opts),
             enabled: () => options.git,
         },
     ]);
 
     await tasks.run();
-
     console.log('%s project ready', chalk.green.bold('DONE'));
     return true;
 }
