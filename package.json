@@ -1,10 +1,8 @@
 {
     "name": "create-app-now",
     "version": "1.0.0",
-    "description": "basic tools to start building web app",
-    "main": "dist/main.cjs.js",
-    "module": "dist/main.esm.js",
-    "browser": "dist/main.umd.js",
+    "description": "A CLI to bootstrap basic tools for building web app",
+    "main": "src/index.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/padunk/can.git"
@@ -20,23 +18,30 @@
         "email": "abraham.agel@outlook.com",
         "url": "https://github.com/padunk"
     },
-    "bin": "./bin/can.js",
+    "bin": {
+        "create-app-now": "bin/can",
+        "can": "bin/can"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
     "engines": {
         "node": ">=4"
     },
     "license": "MIT",
-    "dependencies": {
-        "optimist": "^0.6.1"
-    },
-    "devDependencies": {
-        "@rollup/plugin-commonjs": "^11.0.1",
-        "@rollup/plugin-node-resolve": "^7.0.0",
-        "rollup": "^1.29.1"
-    },
     "files": [
         "main.js",
         "bin/",
         "dist/",
         "template/"
-    ]
+    ],
+    "dependencies": {
+        "arg": "^4.1.2",
+        "chalk": "^3.0.0",
+        "esm": "^3.2.25",
+        "execa": "^4.0.0",
+        "inquirer": "^7.0.4",
+        "listr": "^0.14.3",
+        "ncp": "^2.0.0"
+    }
 }
