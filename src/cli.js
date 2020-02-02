@@ -1,7 +1,7 @@
 import arg from 'arg';
 import inquirer from 'inquirer';
 
-import { createProject } from './main';
+import { createProject } from './main.js';
 
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg(
