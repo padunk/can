@@ -6,7 +6,7 @@ import inquirer from 'inquirer';
 import { createProject } from './main.js';
 
 function parseArgumentsIntoOptions(rawArgs) {
-  const args = arg(
+  let args = arg(
     {
       '--git': Boolean,
       '--yes': Boolean,
@@ -25,7 +25,7 @@ function parseArgumentsIntoOptions(rawArgs) {
 }
 
 async function missingOptions(options) {
-  const defaultDirectoryName = 'my-great-app';
+  let defaultDirectoryName = 'my-great-app';
   if (options.skipPrompts) {
     return {
       ...options,
@@ -33,7 +33,7 @@ async function missingOptions(options) {
     };
   }
 
-  const questions = [];
+  let questions = [];
   if (!options.directoryName) {
     questions.push({
       type: 'input',
@@ -51,7 +51,7 @@ async function missingOptions(options) {
     });
   }
 
-  const answers = await inquirer.prompt(questions);
+  let answers = await inquirer.prompt(questions);
   return {
     ...options,
     git: options.git || answers.git,
