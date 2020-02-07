@@ -1,4 +1,4 @@
-# create-app-now (WORK IN PROGRESS!!)
+# create-app-now
 
 ## Basic tools you need to build a web app
 
@@ -12,10 +12,14 @@ The most simple tools you need to build a web app is:
 
 ## Usage
 
-`can (project-directory)[-y | --yes][-g | --git]`
+`can (project-directory-name)[-y | --yes][-g | --git]`
+`create-app-now (project-directory-name)[-y | --yes][-g | --git]`
 - -y | --yes: skip prompts. Default: *false*
 - -g | --git: initialize git. Default: *false*
 
+## Example
+
+From your favourite terminal
 ```bash
 can
 cd my-great-app
