@@ -30,9 +30,9 @@
     },
     "license": "MIT",
     "files": [
+        "index.js",
         "main.js",
         "bin/",
-        "dist/",
         "template/"
     ],
     "dependencies": {
