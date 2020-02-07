@@ -2,7 +2,7 @@
     "name": "create-app-now",
     "version": "1.0.0",
     "description": "A CLI to bootstrap basic tools for building web app",
-    "main": "bin/can",
+    "main": "./src/cli.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/padunk/can"
@@ -19,8 +19,8 @@
         "url": "https://github.com/padunk"
     },
     "bin": {
-        "create-app-now": "bin/can",
-        "can": "bin/can"
+        "create-app-now": "./bin/can",
+        "can": "./bin/can"
     },
     "publishConfig": {
         "access": "public"

@@ -13,7 +13,10 @@ The most simple tools you need to build a web app is:
 ## Usage
 
 `can (project-directory-name)[-y | --yes][-g | --git]`
+or
 `create-app-now (project-directory-name)[-y | --yes][-g | --git]`
+
+- project-directory-name: your project directory name. Default: *my-great-app*
 - -y | --yes: skip prompts. Default: *false*
 - -g | --git: initialize git. Default: *false*
 
