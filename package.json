@@ -2,10 +2,10 @@
     "name": "create-app-now",
     "version": "1.0.0",
     "description": "A CLI to bootstrap basic tools for building web app",
-    "main": "src/index.js",
+    "main": "bin/can",
     "repository": {
         "type": "git",
-        "url": "https://github.com/padunk/can.git"
+        "url": "https://github.com/padunk/can"
     },
     "keywords": [
         "javascript",
