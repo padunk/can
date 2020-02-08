@@ -13,7 +13,7 @@ async function copyTemplate(options) {
   return copy(options.templateDirectory, options.targetDirectory, {
     filter: file => {
       if (!options.git) {
-        return !/.*(.gitignore)$/.test(file);
+        return !(/.gitignore$/.test(file));
       }
       return true;
     },
