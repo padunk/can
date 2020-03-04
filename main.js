@@ -31,6 +31,21 @@ async function gitInit(options) {
   return;
 }
 
+function changeTitle(title, filePath) {
+  const newFilePath = path.join(filePath, '/views/index.html');
+  fs.readFile(newFilePath, "utf8", (err, data) => {
+    if (err) {
+      console.error('HTML template file not found.', chalk.red.bold('ERROR'));
+    }
+    const newFile = data.replace(/My great app/, title);
+    fs.writeFile(newFilePath, newFile, "utf8", err => {
+      if (err) {
+        console.error('Failed to change the HTML title.', chalk.red.bold('ERROR'));
+      }
+    });
+  });
+}
+
 export async function createProject(options) {
   let opts = {
     ...options,
@@ -43,6 +58,8 @@ export async function createProject(options) {
 
   let templateDir = path.resolve(currentFileUrl, '../template');
   opts.templateDirectory = templateDir;
+
+  changeTitle(opts.targetDirectory, opts.templateDirectory);
 
   try {
     await access(templateDir, fs.constants.R_OK);
