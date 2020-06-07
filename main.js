@@ -1,19 +1,20 @@
-import fs from 'fs';
-import chalk from 'chalk';
-import ncp from 'ncp';
-import path from 'path';
-import { promisify } from 'util';
-import execa from 'execa';
-import Listr from 'listr';
+import fs from "fs";
+import chalk from "chalk";
+import ncp from "ncp";
+import path from "path";
+import { promisify } from "util";
+import execa from "execa";
+import Listr from "listr";
+import { projectInstall } from "pkg-install";
 
 const access = promisify(fs.access);
 const copy = promisify(ncp);
 
 async function copyTemplate(options) {
   return copy(options.templateDirectory, options.targetDirectory, {
-    filter: file => {
+    filter: (file) => {
       if (!options.git) {
-        return !(/.gitignore$/.test(file));
+        return !/.gitignore$/.test(file);
       }
       return true;
     },
@@ -22,26 +23,30 @@ async function copyTemplate(options) {
 }
 
 async function gitInit(options) {
-  let result = await execa('git', ['init'], {
+  let result = await execa("git", ["init"], {
     cwd: options.targetDirectory,
   });
   if (result.failed) {
-    Promise.reject(new Error('Failed to initialize Git'));
+    Promise.reject(new Error("Failed to initialize Git"));
   }
   return;
 }
 
 function changeTitle(title, filePath) {
-  const sourceFilePath = path.join(filePath, '/views/index.html');
-  const targetFilePath = path.join(title, '/views/index.html');
+  const sourceFilePath = path.join(filePath, "/public/index.html");
+  const targetFilePath = path.join(title, "/public/index.html");
+
   fs.readFile(sourceFilePath, "utf8", (err, data) => {
     if (err) {
-      console.error('HTML template file not found.', chalk.red.bold('ERROR'));
+      console.error("HTML template file not found.", chalk.red.bold("ERROR"));
     }
     const newFile = data.replace(/My great app/, title);
-    fs.writeFile(targetFilePath, newFile, "utf8", err => {
+    fs.writeFile(targetFilePath, newFile, "utf8", (err) => {
       if (err) {
-        console.error('Failed to change the HTML title.', chalk.red.bold('ERROR'));
+        console.error(
+          "Failed to change the HTML title.",
+          chalk.red.bold("ERROR")
+        );
       }
     });
   });
@@ -55,35 +60,49 @@ export async function createProject(options) {
   fs.mkdirSync(opts.directoryName);
 
   let currentFileUrl = import.meta.url;
-  currentFileUrl = currentFileUrl.replace('file:///', '');
+  currentFileUrl = currentFileUrl.replace("file:///", "");
 
-  let templateDir = path.resolve(currentFileUrl, '../template');
+  let templateDir = path.resolve(
+    currentFileUrl,
+    "../templates",
+    options.template.toLowerCase()
+  );
   opts.templateDirectory = templateDir;
 
   try {
     await access(templateDir, fs.constants.R_OK);
   } catch (error) {
-    console.error('Invalid template', chalk.red.bold('ERROR'));
+    console.error("Invalid template", chalk.red.bold("ERROR"));
     process.exit(1);
   }
 
   let tasks = new Listr([
     {
-      title: 'Copy template files',
+      title: "Copy template files",
       task: () => copyTemplate(opts),
     },
     {
-      title: 'Change template title',
+      title: "Change template title",
       task: () => changeTitle(opts.targetDirectory, opts.templateDirectory),
     },
     {
-      title: 'Initialize git',
+      title: "Initialize git",
       task: () => gitInit(opts),
       enabled: () => options.git,
+    },
+    {
+      title: "Install dependencies",
+      task: async () =>
+        await projectInstall({
+          cwd: opts.targetDirectory,
+        }),
+      skip: () =>
+        !opts.runInstall &&
+        "Type --install or / -i to automatically install dependencies.",
     },
   ]);
 
   await tasks.run();
-  console.log('%s project ready', chalk.green.bold('DONE'));
+  console.log("%s project ready", chalk.green.bold("DONE"));
   return true;
 }
