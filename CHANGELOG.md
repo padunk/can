@@ -1,3 +1,8 @@
+## 1.1.1 ( June 2020)
+### Patch
+* Add source code
+* Updating README.md
+
 ## 1.1.0 (7 June 2020)
 ### Minor Feat
 * Add more templates (TypeScript, React, Svelte, NodeJS, and Deno)
