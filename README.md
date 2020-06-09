@@ -1,4 +1,4 @@
-# create-app-now 1.1.0
+# create-app-now 1.1.1
 
 ## Basic tools to build a web app
 
