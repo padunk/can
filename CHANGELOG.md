@@ -1,4 +1,8 @@
-## 1.1.1 ( June 2020)
+## 1.1.2 (10 June 2020)
+### Patch
+* Fixing Webpack CSS loader for React Template
+
+## 1.1.1 (9 June 2020)
 ### Patch
 * Add source code
 * Updating README.md
