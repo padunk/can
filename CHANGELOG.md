@@ -1,3 +1,7 @@
+## 1.1.3 (22 June 2020)
+### Patch
+* Adding regenerator-runtime package for React Template
+
 ## 1.1.2 (10 June 2020)
 ### Patch
 * Fixing Webpack CSS loader for React Template
