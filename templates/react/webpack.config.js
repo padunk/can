@@ -16,6 +16,11 @@ module.exports = {
         },
       },
       {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: "javascript/auto",
+      },
+      {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
@@ -33,7 +38,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"],
+    extensions: ["*", ".js", ".jsx", ".mjs", ".json", ".gql", ".graphql"],
     alias: {
       "react-dom": "@hot-loader/react-dom",
     },

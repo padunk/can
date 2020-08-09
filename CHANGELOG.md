@@ -1,28 +1,46 @@
-## 1.1.3 (22 June 2020)
+## 1.1.4 (09 Aug 2020)
+
 ### Patch
-* Adding regenerator-runtime package for React Template
+
+- Adding `mjs, graphql` resolver in React Template Webpack
+
+## 1.1.3 (22 June 2020)
+
+### Patch
+
+- Adding regenerator-runtime package for React Template
 
 ## 1.1.2 (10 June 2020)
+
 ### Patch
-* Fixing Webpack CSS loader for React Template
+
+- Fixing Webpack CSS loader for React Template
 
 ## 1.1.1 (9 June 2020)
+
 ### Patch
-* Add source code
-* Updating README.md
+
+- Add source code
+- Updating README.md
 
 ## 1.1.0 (7 June 2020)
+
 ### Minor Feat
-* Add more templates (TypeScript, React, Svelte, NodeJS, and Deno)
-* Add feat to install packages with --install / -i
-* Ignoring testDir and settings.json in .gitignore
+
+- Add more templates (TypeScript, React, Svelte, NodeJS, and Deno)
+- Add feat to install packages with --install / -i
+- Ignoring testDir and settings.json in .gitignore
 
 ## 1.0.2 (4 March 2020)
+
 ### Patch
-* Add feat(): HTML title will have same title as the user directory
-* Add CSS border, padding and color for button
-* Add .npmignore
+
+- Add feat(): HTML title will have same title as the user directory
+- Add CSS border, padding and color for button
+- Add .npmignore
 
 ## 1.0.1 (8 February 2020)
+
 ### Patch
-* Change file and directory structure
+
+- Change file and directory structure

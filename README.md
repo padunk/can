@@ -1,7 +1,8 @@
-# create-app-now 1.1.1
+# create-app-now 1.1.4
 
 ## Basic tools to build a web app
 
+Boilerplate for building your app from scratch
 With create-app-now you can build your site with simple template with no hassle:
 
 1. Vanilla JavaScript
@@ -73,6 +74,7 @@ code . // if you using VS Code
 ```
 
 ## Svelte Template Folder Structure
+
 This is the same with Svelte template
 
 ```
@@ -112,4 +114,5 @@ Deno template come with Oak and Denon.
 The CSS file include my custom reset. Feel free to clear it 😄.
 
 ## License
+
 [MIT](https://github.com/padunk/create-app-now/blob/master/LICENSE)
