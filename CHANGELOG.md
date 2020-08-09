@@ -1,3 +1,9 @@
+## 1.1.5 (09 Aug 2020)
+
+### Patch
+
+- Updating NPM packages
+
 ## 1.1.4 (09 Aug 2020)
 
 ### Patch
