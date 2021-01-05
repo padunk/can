@@ -1,3 +1,4 @@
 /node_modules
-/testDir
+/test-dir
+.prettierrc
 settings.json
