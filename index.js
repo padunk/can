@@ -5,6 +5,8 @@
 import arg from "arg";
 import inquirer from "inquirer";
 import chalk from "chalk";
+import fs from "fs";
+import path from "path";
 
 import { createProject } from "./main.js";
 
@@ -14,9 +16,13 @@ function parseArgumentsIntoOptions(rawArgs) {
       "--git": Boolean,
       "--yes": Boolean,
       "--install": Boolean,
+      "--help": Boolean,
+      "--version": Boolean,
       "-g": "--git",
       "-y": "--yes",
       "-i": "--install",
+      "-h": "--help",
+      "-v": "--version",
     },
     {
       argv: rawArgs.slice(2),
@@ -27,6 +33,8 @@ function parseArgumentsIntoOptions(rawArgs) {
     git: args["--git"] || false,
     directoryName: args._[0],
     runInstall: args["--install"] || false,
+    help: args["--help"] || false,
+    version: args["--version"] || false,
   };
 }
 
@@ -84,8 +92,28 @@ async function missingOptions(options) {
   };
 }
 
+const helpManual = {
+  "--install": "install npm dependencies",
+  "--git": "initialize git",
+  "--yes": "skip prompt and set everything to default",
+  "--help": "show help manual",
+  "--version": "show create-app-now version",
+};
+
 export async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
-  options = await missingOptions(options);
-  await createProject(options);
+
+  if (options.help) {
+    for (const key in helpManual) {
+      console.log(`${key}: ${helpManual[key]}`);
+    }
+  } else if (options.version) {
+    const pkgJSON = fs.readFileSync(path.resolve(__dirname + "/package.json"), {
+      encoding: "utf-8",
+    });
+    console.log(JSON.parse(pkgJSON).version);
+  } else {
+    options = await missingOptions(options);
+    await createProject(options);
+  }
 }
