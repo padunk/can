@@ -1,3 +1,12 @@
+## 1.1.6 (05 January 2021)
+
+### Patch
+
+- Adding help feature
+- Adding version feature
+- Updating React template from create-react-app eject
+- Updating Svelte template
+
 ## 1.1.5 (09 Aug 2020)
 
 ### Patch
