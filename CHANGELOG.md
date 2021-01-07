@@ -1,3 +1,10 @@
+## 1.1.7 (07 January 2021)
+
+### Patch
+
+- Adding Prettier to Svelte template
+- Add prettierrc file to roots
+
 ## 1.1.6 (05 January 2021)
 
 ### Patch
