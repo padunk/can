@@ -14,7 +14,7 @@ async function copyTemplate(options) {
   return copy(options.templateDirectory, options.targetDirectory, {
     filter: (file) => {
       if (!options.git) {
-        return !/.gitignore$/.test(file);
+        return !/\.gitignore/.test(file);
       }
       return true;
     },
@@ -43,10 +43,7 @@ function changeTitle(title, filePath) {
     const newFile = data.replace(/My great app/, title);
     fs.writeFile(targetFilePath, newFile, "utf8", (err) => {
       if (err) {
-        console.error(
-          "Failed to change the HTML title.",
-          chalk.red.bold("ERROR")
-        );
+        console.error("Failed to change the HTML title.", chalk.red.bold("ERROR"));
       }
     });
   });
@@ -62,11 +59,7 @@ export async function createProject(options) {
   let currentFileUrl = import.meta.url;
   currentFileUrl = currentFileUrl.replace("file:///", "");
 
-  let templateDir = path.resolve(
-    currentFileUrl,
-    "../templates",
-    options.template.toLowerCase()
-  );
+  let templateDir = path.resolve(currentFileUrl, "../templates", options.template.toLowerCase());
   opts.templateDirectory = templateDir;
 
   try {
@@ -97,12 +90,16 @@ export async function createProject(options) {
           cwd: opts.targetDirectory,
         }),
       skip: () =>
-        !opts.runInstall &&
-        "Type --install or / -i to automatically install dependencies.",
+        !opts.runInstall && "Type --install or / -i to automatically install dependencies.",
     },
   ]);
 
   await tasks.run();
   console.log("%s project ready", chalk.green.bold("DONE"));
+  console.log("---");
+  console.log("cd %s", chalk.yellow(options.directoryName));
+  console.log("npm run start or npm run dev");
+  console.log("%s", chalk.cyan.bold("Happy Hacking!"));
+  console.log("---");
   return true;
 }
