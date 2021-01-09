@@ -7,8 +7,8 @@ With create-app-now you can build your site with simple template with no hassle:
 
 1. Vanilla JavaScript
 2. Vanilla TypeScript
-3. React (with Webpack)
-4. Svelte
+3. React (based on [CRA](https://create-react-app.dev) eject)
+4. Svelte (with prettier and prettier-plugin-svelte)
 5. NodeJS and Express (with nodemon)
 6. Deno and Oak (with Denon)
 
@@ -30,6 +30,8 @@ or
 - -y | --yes: skip prompts. Default: _false_
 - -g | --git: initialize git. Default: _false_
 - -i | --install: install node package automatically. Default: _null_
+- -h | --help: show help instructions
+- -v | --version: check create-app-now version
 
 ## Example
 
@@ -58,19 +60,27 @@ code . // if you using VS Code
 ## React Template Folder Structure
 
 ```
-📂dist
+📂config
+   📂jest
+📂scripts
+   🗒build.js
+   🗒start.js
+   🗒test.js
 📂public
    🗒index.html
 📂src
    🗒App.css
    🗒App.js
+   🗒App.test.js
+   🗒index.css
    🗒index.js
-🗒.babelrc
+   🗒logo.svg
+   🗒reportWebVitals.js
+   🗒setupTest.js
 🗒.gitignore
-🗒package.json
-🗒README.md
 🗒LICENSE
-🗒webpack.config.js
+🗒README.md
+🗒package.json
 ```
 
 ## Svelte Template Folder Structure
