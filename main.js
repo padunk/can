@@ -10,11 +10,11 @@ import { projectInstall } from "pkg-install";
 const access = promisify(fs.access);
 const copy = promisify(ncp);
 
-async function copyTemplate(options) {
-  return copy(options.templateDirectory, options.targetDirectory, {
+async function copyTemplate({ git, targetDirectory, templateDirectory }) {
+  return copy(templateDirectory, targetDirectory, {
     filter: (file) => {
-      if (!options.git) {
-        return !/\.gitignore/.test(file);
+      if (!git) {
+        return !/_gitignore/.test(file);
       }
       return true;
     },
@@ -22,11 +22,13 @@ async function copyTemplate(options) {
   });
 }
 
-async function gitInit(options) {
-  let result = await execa("git", ["init"], {
-    cwd: options.targetDirectory,
-  });
-  if (result.failed) {
+async function gitInit({ targetDirectory }) {
+  try {
+    await execa("git", ["init"], {
+      cwd: targetDirectory,
+    });
+  } catch (error) {
+    console.error(error);
     Promise.reject(new Error("Failed to initialize Git"));
   }
   return;
@@ -47,6 +49,13 @@ function changeTitle(title, filePath) {
       }
     });
   });
+}
+
+function renameGitignore(filePath) {
+  const oldName = path.join(filePath, "/_gitignore");
+  const newName = path.join(filePath, "/.gitignore");
+
+  fs.renameSync(oldName, newName);
 }
 
 export async function createProject(options) {
@@ -79,6 +88,11 @@ export async function createProject(options) {
       task: () => changeTitle(opts.targetDirectory, opts.templateDirectory),
     },
     {
+      title: "",
+      task: () => renameGitignore(opts.targetDirectory),
+      enabled: () => options.git,
+    },
+    {
       title: "Initialize git",
       task: () => gitInit(opts),
       enabled: () => options.git,
@@ -98,7 +112,8 @@ export async function createProject(options) {
   console.log("%s project ready", chalk.green.bold("DONE"));
   console.log("---");
   console.log("cd %s", chalk.yellow(options.directoryName));
-  console.log("npm run start or npm run dev");
+  console.log("run npm install");
+  console.log("To start a development server run npm run start or npm run dev");
   console.log("%s", chalk.cyan.bold("Happy Hacking!"));
   console.log("---");
   return true;
