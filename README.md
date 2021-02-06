@@ -1,6 +1,6 @@
 # create-app-now
 
-## Basic tools to build a web app
+## Basic tool to build a web app
 
 Boilerplate for building your app from scratch
 With create-app-now you can build your site with simple template with no hassle:
@@ -11,6 +11,9 @@ With create-app-now you can build your site with simple template with no hassle:
 4. Svelte (with prettier and prettier-plugin-svelte)
 5. NodeJS and Express (with nodemon)
 6. Deno and Oak (with Denon)
+7. React with [snowpack](https://snowpack.dev)
+8. Svelte with [snowpack](https://snowpack.dev)
+9. Vite with its [template](https://vitejs.dev)
 
 ## Install
 
@@ -26,12 +29,17 @@ or
 
 `can (project-directory-name)[-y | --yes][-g | --git][-i | --install]`
 
+for Vite template
+
+`can --vite`
+
 - project-directory-name: your project directory name. Default: _my-great-app_
 - -y | --yes: skip prompts. Default: _false_
 - -g | --git: initialize git. Default: _false_
 - -i | --install: install node package automatically. Default: _null_
 - -h | --help: show help instructions
 - -v | --version: check create-app-now version
+- --vite: get vite templates
 
 ## Example
 

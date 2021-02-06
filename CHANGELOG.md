@@ -1,3 +1,10 @@
+## 1.8.0 (06 February 2021)
+
+### Minor Feat
+
+- Adding React-Snowpack and Svelte-Snowpack templates
+- Adding Vite sub process to initialize creating its based template
+
 ## 1.1.7 (07 January 2021)
 
 ### Patch
