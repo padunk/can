@@ -1,6 +1,6 @@
 {
   "name": "create-app-now",
-  "version": "1.8.0",
+  "version": "1.8.1",
   "description": "A CLI to bootstrap basic tools for building web app",
   "main": "./index.js",
   "scripts": {
@@ -35,6 +35,7 @@
   "files": [
     "index.js",
     "main.js",
+    "runVite.js",
     "bin/",
     "templates/"
   ],

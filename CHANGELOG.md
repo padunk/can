@@ -1,3 +1,9 @@
+## 1.8.1 (19 February 2021)
+
+### Patch
+
+- Adding runVite.js in package.json
+
 ## 1.8.0 (06 February 2021)
 
 ### Minor Feat
